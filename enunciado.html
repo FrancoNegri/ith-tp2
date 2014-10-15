@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="../bootstrap.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Introducci&oacute;n a las Tecnolog&iacute;as del Habla</title>
+<link rel="shortcut icon" href="http://www.dc.uba.ar/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+<div class="row">
+ <div class="col-md-3"></div>
+ <div class="col-md-7 ">
+
+<h1>TP2 - Reconocimiento Autom&aacute;tico del G&eacute;nero del Hablante</h1>
+<p><b>Introducci&oacute;n a las Tecnolog&iacute;as del Habla</b> - 2&ordm; Cuatrimestre de 2014 - DC, FCEyN, UBA</p>
+
+<p>
+El objetivo de este trabajo pr&aacute;ctico es construir un sistema de reconocimiento autom&aacute;tico del g&eacute;nero de una persona (masculino/femenino), a partir de una grabaci&oacute;n corta de su habla.
+</p>
+
+<p>
+Para armar el sistema se cuenta con un conjunto de datos de desarrollo, contenido 
+en el archivo <a href="tp2-dev.zip">tp2-dev.zip</a>, que consta de 180 archivos 
+de audio nombrados "NNN-G.wav", donde NNN=021..200, y G=m/f (el g&eacute;nero del hablante). 
+Cada archivo consiste en una grabaci&oacute;n de habla de aproximadamente 3 segundos de duraci&oacute;n por un hablante del g&eacute;nero indicado (m/f).
+</p>
+
+<p>Se pide armar un sistema capaz de clasificar un nuevo audio en masculino/femenino. Para ello se debe:
+
+<ol>
+<li> <b>Extraer atributos del archivo de audio.</b><br>
+Para esto, debe usarse la herramienta <a href="http://opensmile.sourceforge.net/">openSMILE</a>, con la configuraci&oacute;n para el <a href="http://emotion-research.net/sigs/speech-sig/paralinguistic-challenge">INTERSPEECH 2010 Paralinguistic Challenge</a>. 
+En los labos, openSMILE est&aacute; instalado en <font style="font-family:Courier new">/home/ith50/opensmile</font>, y se puede usar con el siguiente comando:
+<pre>$DIR/SMILExtract -C $DIR/config/IS10_paraling.conf -I in.wav -O out.arff</pre> donde <font style="font-family:Courier new">$DIR=/home/ith50/opensmile</font>.
+ Para m&aacute;s informaci&oacute;n sobre los atributos extraidos, ver la p&aacute;gina 32 del <a href="http://sourceforge.net/projects/opensmile/files/openSMILE_book_1.0.1.pdf/download">openSMILE book</a>.
+
+<li> <b>Realizar una selecci&oacute;n de atributos.</b><br>
+En Weka, experimentar con diferentes m&eacute;todos de b&uacute;squeda y evaluadores de atributos. Por ejemplo: &lt;m&eacute;todo: Ranker; evaluador: InfoGain&gt;, o bien &lt;m&eacute;todo: GreedyStepwise; evaluador: ClassifierSubsetEval, eligiendo JRip o J48 como clasificador&gt;.
+Es fundamental quedarse con un conjunto reducido de atributos, de <u>un orden de magnitud inferior a la cantidad de instancias</u> (en este caso, conservar como m&aacute;ximo 40 atributos (y la clase)).
+
+
+<li> <b>Entrenar un modelo de aprendizaje autom&aacute;tico.</b><br>
+En Weka, experimentar con algoritmos de aprendizaje como, por ejemplo, trees.J48 (c4.5), rules.JRip (Ripper), bayes.NaiveBayes y functions.SMO (support vector machines). Usar en todos los casos 5-fold cross-validation. Guardar el modelo que mejor funcione.
+
+
+<li> <b>Escribir un programa que, dado un audio nuevo, extraiga los atributos necesarios e invoque al modelo aprendido para realizar la clasificaci&oacute;n.</b><br>
+Esto puede realizarse en cualquier lenguaje de programaci&oacute;n (p.ej., Python). Puede suponerse que el audio de entrada tiene formato y caracter&iacute;sticas similares a los del conjunto de test. La &uacute;nica salida del programa debe ser una l&iacute;nea de texto con la letra 'm' o 'f', seg&uacute;n corresponda.
+
+</ol>
+
+<hr>
+
+<h2>Modalidad de entrega</h2> 
+
+<p>Este TP debe realizarse en <b>grupos de dos integrantes</b>.
+
+<p>La entrega se realiza por mail a <b>uba<font color="#010101">.</font>habla <!-- sugatin@cd.abu.ra -->[at] <!-- suga@sc.culombia.ude -->gmail.com</b>.
+Debe ponerse como subject "TP2 apellido1 y apellido2", y se debe adjuntar un archivo comprimido "apellido1-apellido2.zip" con:</p>
+
+<ol>
+<li>Un breve informe (TXT o PDF) describiendo los experimentos realizados y los resultados obtenidos. Para el mejor sistema encontrado, reportar el porcentaje promedio de aciertos (<i>Correctly classified instances</i>). Listar el conjunto de atributos usados.
+
+<li>Los archivos y scripts necesarios para ejecutar el programa del punto 4, con el c&oacute;digo bien comentado.
+El programa debe funcionar en modo <i>batch</i> (no interactivo), recibiendo como &uacute;nico argumento el nombre del archivo wav a procesar. Ejemplo:
+<pre>./genero.py /path/to/input.wav</pre>
+ El programa debe correr en Linux en las m&aacute;quinas del laboratorio Turing.
+</ol>
+</p>
+
+<p><b>Fecha l&iacute;mite:</b> <u>Lunes 3 de noviembre a las 23:59 horas.</u> 
+ Los TPs entregados fuera de t&eacute;rmino ser&aacute;n aceptados, pero la demora incidir&aacute; negativamente en la nota.
+</p>
+
+<hr>
+
+<a name="pyr"></a><h2>Preguntas y respuestas</h2>
+
+<p><b>Pregunta:</b>
+<i>&iquest;C&oacute;mo especifico en Weka qu&eacute; datos de training/test usar?
+</i>
+<br>
+<b>Respuesta:</b>
+La idea es que usen los datos de tp2-dev.zip para training/test con validaci&oacute;n cruzada de 5 pliegues (5-fold cross validation) (*).
+Solapa "Classify", "Test options", hay que elegir "Cross-validation Folds: 5".<br>
+
+(*) k-fold Cross Validation: Break data into k sets of size n/k.
+Train on k-1 datasets and test on 1. Repeat k times and take a mean accuracy.
+</p>
+
+<!--
+<p><b>Pregunta:</b>
+<i>
+</i>
+<br>
+<b>Respuesta:</b>
+</p>
+-->
+<hr>
+<p align=right><b>Ultima actualizaci&oacute;n:</b> 14 Oct 2014</p>
+
+</div>
+</div>
+
+</body>
+</html>
