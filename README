@@ -1,0 +1,10 @@
+Cómo son las divisiones?
+======================== 
+Clase: m o f
+Instancias: cada audios
+Attr: todos los que aparecen de opensmile. Después se filtran.
+
+Selección de atributos
+========================
+Si probamos diferentes métodos, como Ranker y GreedyStep, después podemos quedarnos con los mejores de cada uno y hacer un merge? 
+O solo seleccionamos uno de ellos?
