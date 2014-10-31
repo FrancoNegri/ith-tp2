@@ -1,0 +1,75 @@
+=== Run information ===
+
+Scheme:weka.classifiers.lazy.IB1 
+Relation:     SMILEfeatures-weka.filters.unsupervised.attribute.Remove-V-R1,685,684,676,1441,1432,1442,678,686,1440,691,713,712,1446,1434,1522,256,266,265,264,707,327,1437,258,271,319,1436,277,1330,321,328,329,279,285,270,286
+Instances:    180
+Attributes:   36
+              sexo
+              F0finEnv_sma_quartile2
+              F0finEnv_sma_quartile1
+              F0finEnv_sma_amean
+              F0final_sma_quartile2
+              F0final_sma_amean
+              F0final_sma_quartile3
+              F0finEnv_sma_linregc2
+              F0finEnv_sma_quartile3
+              F0final_sma_quartile1
+              F0finEnv_sma_percentile99.0
+              voicingFinalUnclipped_sma_pctlrange0-1
+              voicingFinalUnclipped_sma_percentile99.0
+              F0final_sma_percentile99.0
+              F0final_sma_linregc2
+              F0final_sma_de_percentile99.0
+              mfcc_sma[11]_amean
+              mfcc_sma[11]_quartile3
+              mfcc_sma[11]_quartile2
+              mfcc_sma[11]_quartile1
+              voicingFinalUnclipped_sma_quartile3
+              mfcc_sma[14]_quartile1
+              F0final_sma_stddev
+              mfcc_sma[11]_linregc2
+              mfcc_sma[11]_percentile99.0
+              mfcc_sma[14]_amean
+              F0final_sma_linregerrQ
+              mfcc_sma[12]_amean
+              lspFreq_sma_de[5]_linregerrA
+              mfcc_sma[14]_linregc2
+              mfcc_sma[14]_quartile2
+              mfcc_sma[14]_quartile3
+              mfcc_sma[12]_linregc2
+              mfcc_sma[12]_quartile1
+              mfcc_sma[11]_percentile1.0
+              mfcc_sma[12]_quartile2
+Test mode:5-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+IB1 classifier
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         178               98.8889 %
+Incorrectly Classified Instances         2                1.1111 %
+Kappa statistic                          0.9778
+Mean absolute error                      0.0111
+Root mean squared error                  0.1054
+Relative absolute error                  2.2222 %
+Root relative squared error             21.0819 %
+Total Number of Instances              180     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 1         0.022      0.978     1         0.989      0.989    m
+                 0.978     0          1         0.978     0.989      0.989    f
+Weighted Avg.    0.989     0.011      0.989     0.989     0.989      0.989
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 90  0 |  a = m
+  2 88 |  b = f
+
