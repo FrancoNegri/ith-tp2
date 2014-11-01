@@ -1,10 +1,28 @@
-Cómo son las divisiones?
-======================== 
-Clase: m o f
-Instancias: cada audios
-Attr: todos los que aparecen de opensmile. Después se filtran.
-
-Selección de atributos
+Selección de atributos:
 ========================
-Si probamos diferentes métodos, como Ranker y GreedyStep, después podemos quedarnos con los mejores de cada uno y hacer un merge? 
-O solo seleccionamos uno de ellos?
+Probamos diferentes métodos de selección de atributos, de cada uno de ellos tomamos los primeros
+40. 
+Luego, se corrieron varios clasificadores diferentes, como Bayes, Lazy, Trees, etc.
+El que mejor resultado nos dio, fue tomando lazyIB1 y tomando los primeros 36 atributos de Ranker. 
+De esta forma obtuvimos una clasificación con solo 2 errores.
+
+Implementación:
+=======================
+Con un script de python seleccionamos los atributos de los wav.
+Utilizando el comando de openSmile:
+SMILExtract -C config/IS10_paraling.conf -I ../tp2-dev/ i -O output.arff -instname i[4]
+
+donde i es el archivo wav NNN-{m/f}.wav. 
+Solucionamos la clase de .arff modificando el campo 
+
+@attribute name por @attribute sexe {m,f}
+
+
+Luego, desde weka corrimos el selector de atributos Ranker y tomamos los 36 primeros.
+Seleccionamos el clasificado lazyIB1 y guardamos ese modelo.
+
+Nuevamente con python, generamos el script principal que toma un audio, extrae esos
+36 atributos seleccionados y aplicamos el modelo guardado obteniendo la respuesta.
+
+
+
