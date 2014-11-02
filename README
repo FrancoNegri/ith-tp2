@@ -1,28 +1,44 @@
-Selección de atributos:
+MODO DE USO:
+========================
+setear el path de openSMILE en el archivo de configuración que corresponda (.zshrc, .profile, etc) 
+
+export PATH="$DIR/opensmile/inst/bin"
+
+donde DIR es el directorio completo donde se encuentra.
+
+ejecutar el script "clasificador.sh" del siguiente modo:
+
+./clasificador archivo.wav
+
+el resultado será mostrado en consola y se crearán logfiles en la carpeta processing para más detalles.
+
+
+SELECCIÓN DE ATRIBUTOS:
 ========================
 Probamos diferentes métodos de selección de atributos, de cada uno de ellos tomamos los primeros
 40. 
-Luego, se corrieron varios clasificadores diferentes, como Bayes, Lazy, Trees, etc.
-El que mejor resultado nos dio, fue tomando lazyIB1 y tomando los primeros 36 atributos de Ranker. 
-De esta forma obtuvimos una clasificación con solo 2 errores.
+Luego, se corrieron varios clasificadores diferentes: Bayes, Lazy, Trees, etc.
+El que mejor resultado nos dio lazyIB1.
+Quitando y agregando atributos sobre los 40 originales, 
+notamos que el corportamiento mejoraba tomando los primeros 36 atributos de Ranker. 
+De esta forma obtuvimos una clasificación con solo 2 errores sobre el training set usando 5 fold.
+Este modelo fue guardado.
 
-Implementación:
+IMPLEMENTACIÓN:
 =======================
-Con un script de python seleccionamos los atributos de los wav.
+Con un script de python (get_attr.py) seleccionamos los atributos de los wav.
 Utilizando el comando de openSmile:
+
 SMILExtract -C config/IS10_paraling.conf -I ../tp2-dev/ i -O output.arff -instname i[4]
 
 donde i es el archivo wav NNN-{m/f}.wav. 
-Solucionamos la clase de .arff modificando el campo 
 
-@attribute name por @attribute sexe {m,f}
+Agregamos la clase {m,f} en el .arff modificando el campo 
 
+"@attribute name" por "@attribute sexo {m,f}""
 
-Luego, desde weka corrimos el selector de atributos Ranker y tomamos los 36 primeros.
-Seleccionamos el clasificado lazyIB1 y guardamos ese modelo.
-
-Nuevamente con python, generamos el script principal que toma un audio, extrae esos
-36 atributos seleccionados y aplicamos el modelo guardado obteniendo la respuesta.
+Una vez seleccionados los atributos y el modelo, implementamos un script de bash (clasificador.sh) 
+que predice el sexo de un audio (ver "MODO DE USO")
 
 
 
