@@ -1,0 +1,22 @@
+[ 02.11.2014 - 11:44:15 ]
+    (MSG) [2] in SMILExtract : openSMILE starting!
+[ 02.11.2014 - 11:44:15 ]
+    (MSG) [2] in SMILExtract : config file is: Configs/IS10_paraling.conf
+[ 02.11.2014 - 11:44:15 ]
+    (MSG) [2] in cComponentManager : successfully registered 89 component types.
+[ 02.11.2014 - 11:44:15 ]
+    (MSG) [2] in configManager : reading config file 'Configs/IS10_paraling.conf'
+[ 02.11.2014 - 11:44:15 ]
+    (MSG) [2] in configManager : reading config file 'arff_targets.conf'
+[ 02.11.2014 - 11:44:15 ]
+    (MSG) [2] in configManager : config file 'arff_targets.conf' not found, trying to open 'Configs/arff_targets.conf'.
+[ 02.11.2014 - 11:44:15 ]
+    (MSG) [2] in instance 'arffsink' : writing ARFF header (1582 features)...
+[ 02.11.2014 - 11:44:15 ]
+    (MSG) [2] in cComponentManager : successfully finished createInstances
+                                 (31 component instances were finalised, 1 data memories were finalised)
+[ 02.11.2014 - 11:44:15 ]
+    (MSG) [2] in cComponentManager : starting single thread processing loop
+[ 02.11.2014 - 11:44:16 ]
+    (MSG) [2] in cComponentManager : Processing finished! System ran for 309 ticks.
+nclasses: 1

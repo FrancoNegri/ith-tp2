@@ -1,0 +1,42 @@
+@relation SMILEfeatures
+
+@attribute sexo {m,f}
+@attribute F0finEnv_sma_quartile2 numeric
+@attribute F0finEnv_sma_quartile1 numeric
+@attribute F0finEnv_sma_amean numeric
+@attribute F0final_sma_quartile2 numeric
+@attribute F0final_sma_amean numeric
+@attribute F0final_sma_quartile3 numeric
+@attribute F0finEnv_sma_linregc2 numeric
+@attribute F0finEnv_sma_quartile3 numeric
+@attribute F0final_sma_quartile1 numeric
+@attribute F0finEnv_sma_percentile99.0 numeric
+@attribute voicingFinalUnclipped_sma_pctlrange0-1 numeric
+@attribute voicingFinalUnclipped_sma_percentile99.0 numeric
+@attribute F0final_sma_percentile99.0 numeric
+@attribute F0final_sma_linregc2 numeric
+@attribute F0final_sma_de_percentile99.0 numeric
+@attribute mfcc_sma[11]_amean numeric
+@attribute mfcc_sma[11]_quartile3 numeric
+@attribute mfcc_sma[11]_quartile2 numeric
+@attribute mfcc_sma[11]_quartile1 numeric
+@attribute voicingFinalUnclipped_sma_quartile3 numeric
+@attribute mfcc_sma[14]_quartile1 numeric
+@attribute F0final_sma_stddev numeric
+@attribute mfcc_sma[11]_linregc2 numeric
+@attribute mfcc_sma[11]_percentile99.0 numeric
+@attribute mfcc_sma[14]_amean numeric
+@attribute F0final_sma_linregerrQ numeric
+@attribute mfcc_sma[12]_amean numeric
+@attribute lspFreq_sma_de[5]_linregerrA numeric
+@attribute mfcc_sma[14]_linregc2 numeric
+@attribute mfcc_sma[14]_quartile2 numeric
+@attribute mfcc_sma[14]_quartile3 numeric
+@attribute mfcc_sma[12]_linregc2 numeric
+@attribute mfcc_sma[12]_quartile1 numeric
+@attribute mfcc_sma[11]_percentile1.0 numeric
+@attribute mfcc_sma[12]_quartile2 numeric
+
+@data
+
+?,147.9875,136.7226,158.9566,131.8284,141.9658,169.578,174.6882,162.4184,103.6739,254.2175,0.787088,0.787088,266.343,169.8524,44.84504,3.860674,12.89917,1.778424,-7.959877,0.748554,-15.85337,60.77316,7.695853,57.05055,-10.19979,3431.354,-8.919172,0.018419,-12.7425,-9.754307,-4.276558,-24.58374,-17.99157,-23.06758,-7.276974
