@@ -5,26 +5,7 @@ import sys
 import os
 import subprocess 
 
-
-def extrar_atributos():
-    path = "~/Repos/ith-tp2/opensmile-2.0-rc1/opensmile/config/IS10_paraling.conf"
-    for i in os.listdir("../tp2-dev/"):
-        if i.endswith(".wav"): 
-            print "Extrayendo attr de: ", i
-            # $DIR/SMILExtract -C $DIR/config/IS10_paraling.conf -I in.wav -O out.arff
-            cmd = "SMILExtract -C " + path + " -I ../tp2-dev/"+ i + " -O output.arff -instname "+ i[4] +" -classes {m,f} -classlabel " + i[4]
-            print cmd
-            p = subprocess.Popen(cmd , shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            p.wait()
-            # output = process.communicate()[0]
-            continue
-        else:
-            continue
-
-
-# la idea es aplicar varios métodos de búsqueda de atributos 
-# y darles un puntaje según cuantas veces aparece un atributo 
-# en los resultados de cada método.
+# pongo acá algunos resultados, el que mejor anduvo es el Ranker
 
 # valuator:    weka.attributeSelection.InfoGainAttributeEval 
 # Search:weka.attributeSelection.Ranker -T -1.7976931348623157E308 -N -1
@@ -35,7 +16,23 @@ ranker_info_gain = [1,685,684,676,1441,1432,1442,678,686,1440,691,713,712,1446,1
 greedy_cfs_subset = [1,68,78,83,103,133,137,180,216,235,245,256,258,270,271,277,279,285,291,292,313,327,398,485,529,552,598,640,652,655,663,664,676,678,683,684,685,686,691,706,712,713,733,886,943,1016,1066,1321,1330,1343,1376,1391,1432,1440,1441,1442,1547]
 ranksearch_cfs_subset = [1,72,103,135,137,182,216,245,256,258,264,265,266,270,271,277,313,327,398,457,485,529,552,598,640,655,664,665,676,678,683,684,685,686,691,706,707,712,713,733,886,943,1028,1066,1330,1331,1332,1343,1391,1394,1432,1434,1436,1437,1440,1441,1442,1446,1522]
 
-# Selecciona los 40 atributos que se encuentren en todos los métodos
+
+def extrar_atributos():
+    path = "~/Repos/ith-tp2/opensmile-2.0-rc1/opensmile/config/IS10_paraling.conf"
+    for i in os.listdir("../tp2-dev/"):
+        if i.endswith(".wav"): 
+            print "Extrayendo attr de: ", i
+            # $DIR/SMILExtract -C $DIR/config/IS10_paraling.conf -I in.wav -O out.arff
+            cmd = "SMILExtract -C Configs/IS10_paraling.conf -I ../tp2-dev/"+ i + " -O output.arff -instname "+ i[4] +" -classes {m,f} -classlabel " + i[4]
+            print cmd
+            p = subprocess.Popen(cmd , shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            p.wait()
+            # output = process.communicate()[0]
+            continue
+        else:
+            continue
+
+# Selecciona los 36 atributos de Ranker que fue lo que anduvo mejor.
 def seleccionar_atributos():
     print ranker_info_gain[:36]
 
