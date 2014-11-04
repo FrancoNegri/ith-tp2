@@ -23,6 +23,7 @@ Quitando y agregando atributos sobre los 40 originales,
 notamos que el corportamiento mejoraba tomando los primeros 36 atributos de Ranker. 
 De esta forma obtuvimos una clasificación con solo 2 errores sobre el training set usando 5 fold.
 Este modelo fue guardado.
+Lo que hace el algoritmo de lazyIB1, es no construir un modelo y esperar hasta que sea necesaria la clasificación de un nuevo dato para, entonces, buscar los vecinos cuyos atributos mejor aproximen a este y luego asignarle la clase de estos.
 
 IMPLEMENTACIÓN:
 =======================
